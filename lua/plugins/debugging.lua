@@ -15,7 +15,7 @@ return {
 				port = "${port}",
 				executable = {
 					-- CHANGE THIS to your path!
-					command = "/home/just_multiply/codelldb/extension/adapter/codelldb",
+					command = "/opt/codelldb/extension/adapter/codelldb",
 					args = { "--port", "${port}" },
 
 					-- On windows you may have to uncomment this:
@@ -35,6 +35,7 @@ return {
 					stopOnEntry = false,
 				},
 			}
+			dap.configurations.c = dap.configurations.cpp
 
 			dap.listeners.before.attach.dapui_config = function()
 				dapui.open()
