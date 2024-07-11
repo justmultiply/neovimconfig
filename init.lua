@@ -6,6 +6,9 @@ vim.cmd("set smarttab")
 vim.cmd("set autoindent")
 vim.cmd("set number")
 
+--setting relativenumber
+vim.wo.relativenumber = true
+
 require("config.lazy")
 require("lazy").setup("plugins")
 require("config.keybinding")
