@@ -17,7 +17,7 @@ function CompileAndRun()
 		else
 			vim.api.nvim_echo({ { "Compilation failed!", "ErrorMsg" } }, false, {})
 		end
-	elseif vim.bo.filetype == 'javascript' or filetype == 'typescript' then
-        vim.cmd("belowright 13split | terminal node %")
+	elseif vim.bo.filetype == "javascript" or filetype == "typescript" then
+		vim.cmd("belowright 13split | terminal node %")
 	end
 end
