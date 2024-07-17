@@ -3,7 +3,7 @@ vim.keymap.set("t", "<leader>tt", "exit <CR> ", {})
 vim.api.nvim_set_keymap(
 	"n",
 	"<leader><leader><leader>r",
-	":lua CompileAndRun()<CR>",
+	":w<CR> | :lua CompileAndRun()<CR>",
 	{ noremap = true, silent = true }
 )
 
