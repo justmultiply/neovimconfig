@@ -19,3 +19,4 @@ require("config.myterminal")
 require("config.snippets")
 --for comments
 require("config.comments")
+require("config.clipboard")
