@@ -1,9 +1,22 @@
-function OpenClearTerminal(direction)
+local M = {}
+
+function M.OpenClearTerminal(direction)
   if direction == 'horizontal' then
     vim.cmd("belowright 13split | terminal")
   elseif direction == 'vertical' then
     vim.cmd("vsplit | terminal")
   end
-  -- Run the clear command and stay in insert mode
-  vim.api.nvim_feedkeys("i clear\n", "n", false)
+
+  vim.api.nvim_feedkeys("clear\n", "n", false)
+  vim.cmd("startinsert")
+
+  vim.cmd [[
+    augroup TerminalAutoClose
+      autocmd!
+      autocmd TermClose * if !v:event.status | close | endif
+    augroup END
+  ]]
 end
+
+return M
+

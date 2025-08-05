@@ -2,6 +2,7 @@
 -- realSUDO's cheat codes for nvim ✨
 
 local toggleCopilot = require("config.toggleCopilot")
+local terminal = require("config.myterminal") -- Terminal config module
 
 -- Mini-map-maker (because typing full commands is for noobs)
 local function map(mode, lhs, rhs, opts)
@@ -15,10 +16,15 @@ map("n", "<C-j>", "<C-w>j") -- ↓
 map("n", "<C-k>", "<C-w>k") -- ↑ 
 map("n", "<C-l>", "<C-w>l") -- →
 
--- Terminal tricks
-map("t", "<leader>tt", "<C-\\><C-n>")      -- Proper terminal exit
-map("n", "<leader>tt", '<cmd>lua OpenClearTerminal("h")<CR>') -- Split me
-map("n", "<leader>ty", '<cmd>lua OpenClearTerminal("v")<CR>') -- Split me sideways
+--Terminal tricks
+vim.keymap.set("t", "<leader>tt", [[<C-\><C-n>:close<CR>]], { desc = "Close Terminal Pane", silent = true })
+vim.keymap.set("n", "<leader>tt", function()
+  terminal.OpenClearTerminal("horizontal")
+end, { desc = "Open Horizontal Terminal", silent = true })
+
+vim.keymap.set("n", "<leader>ty", function()
+  terminal.OpenClearTerminal("vertical")
+end, { desc = "Open Vertical Terminal", silent = true })
 
 -- Magic buttons
 map("n", "<C-p>", "<cmd>Telescope find_files<CR>") -- Find All The Things™
@@ -26,7 +32,7 @@ map("n", "<leader><leader><leader>r", "<cmd>w | lua CompileAndRun()<CR>") -- Com
 
 -- Toggle-ables (FIXED)
 vim.keymap.set("n", "<leader><leader>co", toggleCopilot.ToggleCopilot, { desc = "AI go brrr" })
-map("n", "<leader>tw", "<cmd>lua require('toggleWrap').toggle()<CR>", { desc = "Wrap it like burrito" })
+map("n", "<leader>tw", "<cmd>lua require('config.toggleWrap').toggle()<CR>", { desc = "Wrap it like burrito" })
 
 -- Pro tip: Now you can type these with BOTH hands while drinking coffee ☕
 
