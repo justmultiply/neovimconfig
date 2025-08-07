@@ -28,7 +28,7 @@ end, { desc = "Open Vertical Terminal", silent = true })
 
 -- Magic buttons
 map("n", "<C-p>", "<cmd>Telescope find_files<CR>") -- Find All The Things™
-map("n", "<leader><leader><leader>r", "<cmd>w | lua CompileAndRun()<CR>") -- Compile-go-brrr
+map("n", "<leader><leader><leader>r", ":w<CR> | :lua CompileAndRun()<CR>") -- Compile-go-brrr (with a twist)
 
 -- Toggle-ables (FIXED)
 vim.keymap.set("n", "<leader><leader>co", toggleCopilot.ToggleCopilot, { desc = "AI go brrr" })
